@@ -17,17 +17,19 @@ class HomePageModel {
 }
 
 class SliderItem {
+  final int imgId;
   final String link;
   final String title;
   final String subTitle;
 
-  SliderItem({required this.link, required this.title, required this.subTitle});
+  SliderItem({required this.link, required this.title, required this.subTitle, required this.imgId});
 
   factory SliderItem.fromJson(Map<String, dynamic> json) {
     return SliderItem(
       link: json['link'] ?? '',
       title: json['title'] ?? '',
       subTitle: json['sub_title'] ?? '',
+      imgId: json['img'] ?? 0,
     );
   }
 }
