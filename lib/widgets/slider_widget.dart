@@ -6,39 +6,38 @@ class SliderWidget extends StatelessWidget {
 
   const SliderWidget({super.key, required this.items});
 
-  @overide
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 220,
-      child: PageView.builder{
+      child: PageView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
           final item = items[index];
           return Container(
             margin: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: Colors.bluegrey,
+              color: Colors.blueGrey,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Center(
               child: Column(
-                mainAxisAlignment.MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(item.title,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Color.white,
-                  )),
-                  Text(item.subTitle,
-                  style: const TextStyle(
-                    color: Color.white,
-                  ))
-                ]
-              )
-            )
+                  Text(
+                    item.title,
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                  Text(
+                    item.subTitle,
+                    style: const TextStyle(color: Colors.white70),
+                  ),
+                ],
+              ),
+            ),
           );
-        }
-      }
+        },
+      ),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:biex/models/home_page_model.dart';
 
-class AboutWidget {
+class AboutWidget extends StatelessWidget {
   final AboutSection about;
 
   const AboutWidget({super.key, required this.about});
@@ -11,21 +11,25 @@ class AboutWidget {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
-        crossAsixAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(about.title,
-          style: const TextStyle(
-            fontSize: 22, fontWeight: FontWeight.bold
-          )),
-          const SizeBox(height: 8),
+          Text(
+            about.title,
+            style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 8),
           Text(about.subTitle),
-          const SizeBox(height: 16),
+          const SizedBox(height: 16),
           ClipRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.netWork(about.image, fit: BoxFit.cover),
-          )
-        ] 
-      )
+            // borderRadius: BorderRadius.circular(12),
+            child: Align(
+              alignment: Alignment.topCenter,
+              heightFactor: 0.5,
+              child: Image.network(about.image, fit: BoxFit.cover),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

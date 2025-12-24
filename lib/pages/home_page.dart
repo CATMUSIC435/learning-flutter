@@ -4,10 +4,7 @@ import 'package:biex/models/home_page_model.dart';
 import 'package:biex/widgets/slider_widget.dart';
 import 'package:biex/widgets/about_widget.dart';
 
-import '../core/api/api_service.dart';
-import '../widgets/slider_widget.dart';
-
-class HomePage {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
@@ -17,11 +14,11 @@ class HomePage {
       body: FutureBuilder<HomePageModel>(
         future: ApiService.fetchHomePage(),
         builder: (context, snapshot) {
-          if(snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if(snapshot.hasError) {
+          if (snapshot.hasError) {
             return const Center(child: Text('Error load data'));
           }
 
@@ -30,12 +27,12 @@ class HomePage {
             child: Column(
               children: [
                 SliderWidget(items: data.sliders),
-                AboutWidget(items: data.about),
-              ]
-            )
+                AboutWidget(about: data.about),
+              ],
+            ),
           );
-        }
-      )
+        },
+      ),
     );
   }
 }
