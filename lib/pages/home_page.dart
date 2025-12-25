@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('DXMD Vietnam')),
+      appBar: AppBar(),
       body: FutureBuilder<HomePageModel>(
         future: ApiService.fetchHomePage(),
         builder: (context, snapshot) {

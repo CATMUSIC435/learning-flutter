@@ -24,7 +24,7 @@ class AboutWidget extends StatelessWidget {
             // borderRadius: BorderRadius.circular(12),
             child: Align(
               alignment: Alignment.topCenter,
-              heightFactor: 0.5,
+              heightFactor: 1,
               child: Image.network(about.image, fit: BoxFit.cover),
             ),
           ),

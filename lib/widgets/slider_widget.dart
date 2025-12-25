@@ -16,75 +16,54 @@ class SliderWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           final item = items[index];
           return FutureBuilder<String>(
-          future: Api.fetchImageUrl(items[index].imgId),
-          builder: (context, imgSnap) {
-            if(!imgSnap.hasData) {
-              return const SizedBox();
-            }
+            future: ApiService.fetchImageUrl(items[index].imgId),
+            builder: (context, imgSnap) {
+              if (!imgSnap.hasData) {
+                return const SizedBox();
+              }
 
-            return Container(
-              deceration: DecorationImage(
-                image: NetworkImage(imgSnap.hasData!),
-                fit: BoxFit.cover,
-              ),
-              child: Container(
-                padding: const EdgeInsets.all(24),
-                alignment: Alignment.bottomLeft,
+              return Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignmment.topCenter,
-                    color: [
-                      Colors.black.withOpacity(0.6),
-                      Color.transparent,
-                    ]
-                  )
+                  image: DecorationImage(
+                    image: NetworkImage(imgSnap.data!),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(items[index].title),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
+                child: Container(
+                  padding: const EdgeInsets.all(24),
+                  alignment: Alignment.bottomLeft,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.black.withOpacity(0.6),
+                        Colors.transparent,
+                      ],
                     ),
-                    Text(
-                      items[index].subTitle,
-                      style: const TextStyle(
-                        color: Colors.white70,
-                      )
-                    )
-                  ]
-                )
-              )
-            );
-          }
-        );
-          
-          // return Container(
-          //   margin: const EdgeInsets.all(8),
-          //   decoration: BoxDecoration(
-          //     color: Colors.blueGrey,
-          //     borderRadius: BorderRadius.circular(12),
-          //   ),
-          //   child: Center(
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text(
-          //           item.title,
-          //           style: const TextStyle(fontSize: 20, color: Colors.white),
-          //         ),
-          //         Text(
-          //           item.subTitle,
-          //           style: const TextStyle(color: Colors.white70),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // );
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        items[index].title,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        items[index].subTitle,
+                        style: const TextStyle(color: Colors.white70),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
         },
       ),
     );

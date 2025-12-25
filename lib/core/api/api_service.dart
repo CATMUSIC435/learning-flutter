@@ -17,11 +17,9 @@ class ApiService {
   }
 
   static Future<String> fetchImageUrl(int id) async {
-    final res = await http.get(
-      Uri.parse('$baseUrl/image/$id'),
-    );
+    final res = await http.get(Uri.parse('$baseUrl/media/$id'));
 
     final data = jsonDecode(res.body);
-    return data['media_details']['size']['full']['source_url'];
+    return data['media_details']['sizes']['full']['source_url'];
   }
 }
